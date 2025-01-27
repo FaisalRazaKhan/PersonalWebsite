@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="/css/login.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css"
+        integrity="sha512-jnSuA4Ss2PkkikSOLtYs8BlYIeeIK1h99ty4YfvRPAlzr377vr3CXDb7sb7eEEBYjDtcYj+AjBH3FLv5uSJuXg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+
+	<header class="header">
+	        <nav class="navbar">
+	            <h2 class="logo"><a href="#">CodeWithFaisalRK</a></h2>
+	            <input type="checkbox" id="menu-toggle" />
+	            <label for="menu-toggle" id="hamburger-btn">
+	                <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+	                    <path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+	                </svg>
+	            </label>
+	            <ul class="links">
+	                <li><a href="/">Home</a></li>
+	                <li><a href="/about">About Us</a></li>
+	                <li><a href="/portfolio">Portfolio</a></li>
+	                <li><a href="/contact">Contact Us</a></li>
+	            </ul>
+	            <div class="buttons">
+	                <a href="/login" class="signin">Sign In</a>
+	                <a href="/register" class="signup">Sign Up</a>
+	            </div>
+	        </nav>
+	    </header>
+
+    <section class="hero-section">
+
+        <div class="wrapper login">
+            <a href="/"> <span class="icon-close">
+                    <ion-icon name="close-outline"></ion-icon>
+                </span></a>
+
+            <h2>Login</h2>
+
+            <!-- Form for Login -->
+            <form action="/login" method="POST">
+                <div class="input-box">
+                    <span class="icon"><i class='bx bx-envelope'></i></span>
+                    <input type="email" name="email" required>
+                    <label>Email</label>
+                </div>
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
+                    <input type="password" name="password" required>
+                    <label>Password</label>
+                </div>
+                <div class="remember-forgot">
+                    <label><input type="checkbox">Remember me</label>
+                    <a href="forgot.html">Forgot Password?</a>
+                </div>
+                <button type="submit" class="btn">Login</button>
+
+                <!-- Display error message if credentials are invalid -->
+                <div th:if="${error}" class="alert alert-danger" role="alert">
+                    <p th:text="${error}">Invalid email or password.</p>
+                </div>
+            </form>
+
+            <div class="login-register">
+                <p>Don't have an account? <a href="/register" class="register-link">
+                        <button class="btn" type="button">Register</button></a></p>
+            </div>
+        </div>
+    </section>
+
+</body>
+<script src="script.js"></script>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+</html>
